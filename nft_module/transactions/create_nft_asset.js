@@ -53,8 +53,6 @@ class CreateNFTAsset extends BaseAsset {
     if (senderAddress.toString("hex") !='16c70194f16fa137d96168823f695d2ddb232554') {
       throw new Error("NFT cannot be created from this account"+senderAddress.toString("hex"));
     }
-    console.log("Asset category and url"+ asset.category +" url" + asset.imageUrl)
-
     // 5.create nft
     const nftToken = createNFTToken({
       name: asset.name,
