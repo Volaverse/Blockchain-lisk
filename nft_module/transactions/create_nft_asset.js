@@ -14,7 +14,7 @@ class CreateNFTAsset extends BaseAsset {
   schema = {
     $id: "lisk/nft/create",
     type: "object",
-    required: ["minPurchaseMargin", "initValue", "name"],
+    required: ["minPurchaseMargin", "initValue", "name","category","imageUrl"],
     properties: {
       minPurchaseMargin: {
         dataType: "uint32",
@@ -27,6 +27,14 @@ class CreateNFTAsset extends BaseAsset {
       name: {
         dataType: "string",
         fieldNumber: 3,
+      },
+      category: {
+        dataType: "uint32",
+        fieldNumber: 4,
+      },
+      imageUrl: {
+        dataType: "string",
+        fieldNumber: 5,
       },
     },
   };
@@ -45,6 +53,7 @@ class CreateNFTAsset extends BaseAsset {
     if (senderAddress.toString("hex") !='16c70194f16fa137d96168823f695d2ddb232554') {
       throw new Error("NFT cannot be created from this account"+senderAddress.toString("hex"));
     }
+    console.log("Asset category and url"+ asset.category +" url" + asset.imageUrl)
 
     // 5.create nft
     const nftToken = createNFTToken({
@@ -53,6 +62,8 @@ class CreateNFTAsset extends BaseAsset {
       nonce: transaction.nonce,
       value: asset.initValue,
       minPurchaseMargin: asset.minPurchaseMargin,
+      category: asset.category,
+      imageUrl: asset.imageUrl,
     });
 
     // 6.update sender account with unique nft id

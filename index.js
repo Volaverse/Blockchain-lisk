@@ -28,7 +28,7 @@ const appConfig = utils.objects.mergeDeep({}, configDevnet, {
 	label: 'nft-app',
 	genesisConfig: { communityIdentifier: 'NFT' }, //In order to have a unique networkIdentifier
 	logger: {
-		consoleLogLevel: 'info',
+		consoleLogLevel: 'debug',
 	},
 });
 

@@ -10,7 +10,7 @@ const registeredNFTTokensSchema = {
       fieldNumber: 1,
       items: {
         type: "object",
-        required: ["id", "value", "ownerAddress", "minPurchaseMargin", "name"],
+        required: ["id", "value", "ownerAddress", "minPurchaseMargin", "name","category","imageUrl"],
         properties: {
           id: {
             dataType: "bytes",
@@ -31,6 +31,15 @@ const registeredNFTTokensSchema = {
           name: {
             dataType: "string",
             fieldNumber: 5,
+          },
+          category: {
+            dataType: "uint32",
+            fieldNumber: 6,
+
+          },
+          imageUrl: {
+            dataType: "string",
+            fieldNumber: 7,
           },
         },
       },
