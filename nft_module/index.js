@@ -6,7 +6,8 @@ const PurchaseNFTAsset = require("./transactions/purchase_nft_asset");
 const TransferNFTAsset = require("./transactions/transfer_nft_asset");
 const TransferTestNFTAsset = require("./transactions/transfer_test_nft_asset");
 const SellNFTAsset = require("./transactions/sell_nft_asset");
-
+const EditNFTNameAsset = require("./transactions/edit_title_nft_asset")
+const EditNFTDescAsset = require("./transactions/edit_description_nft_asset")
 // Extend base module to implement your custom module
 class NFTModule extends BaseModule {
   name = "nft";
@@ -27,7 +28,7 @@ class NFTModule extends BaseModule {
       ownNFTs: [],
     },
   };
-  transactionAssets = [new CreateNFTAsset(), new PurchaseNFTAsset(), new TransferNFTAsset(),new TransferTestNFTAsset(),new SellNFTAsset()];
+  transactionAssets = [new CreateNFTAsset(), new PurchaseNFTAsset(), new TransferNFTAsset(),new TransferTestNFTAsset(),new SellNFTAsset(),new EditNFTNameAsset(),new EditNFTDescAsset()];
   actions = {
     // get all the registered NFT tokens from blockchain
     getAllNFTTokens: async () => getAllNFTTokensAsJSON(this._dataAccess),

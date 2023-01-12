@@ -14,7 +14,7 @@ class CreateNFTAsset extends BaseAsset {
   schema = {
     $id: "lisk/nft/create",
     type: "object",
-    required: ["minPurchaseMargin", "initValue", "name","category","imageUrl"],
+    required: ["minPurchaseMargin", "initValue", "name","category","imageUrl","x","y"],
     properties: {
       minPurchaseMargin: {
         dataType: "uint32",
@@ -28,13 +28,25 @@ class CreateNFTAsset extends BaseAsset {
         dataType: "string",
         fieldNumber: 3,
       },
+      description: {
+        dataType: "string",
+        fieldNumber: 4,
+      },
       category: {
         dataType: "uint32",
-        fieldNumber: 4,
+        fieldNumber: 5,
       },
       imageUrl: {
         dataType: "string",
-        fieldNumber: 5,
+        fieldNumber: 6,
+      },
+      x: {
+        dataType: "string",
+        fieldNumber: 7,
+      },
+      y: {
+        dataType: "string",
+        fieldNumber: 8,
       },
     },
   };
@@ -44,24 +56,39 @@ class CreateNFTAsset extends BaseAsset {
     } else if (asset.minPurchaseMargin < 0 || asset.minPurchaseMargin > 100) {
       throw new Error("The NFT minimum purchase value needs to be between 0 and 100.");
     }
+
   };
   async apply({ asset, stateStore, reducerHandler, transaction }) {
     // 4.verify if sender has enough balance
+    const allTokens = await getAllNFTTokens(stateStore);
     const senderAddress = transaction.senderAddress;
     const senderAccount = await stateStore.account.get(senderAddress);
+    var dup=[];
+    if(allTokens.length>0){
+       dup = allTokens.filter((item)=> item.name==asset.name)
+    }
 
-    if (senderAddress.toString("hex") !='16c70194f16fa137d96168823f695d2ddb232554') {
+    console.log("check for dup length "+dup.length)
+
+    if(dup.length>0){
+      throw new Error("Name of nft should be unique");
+    }
+
+    if (senderAddress.toString("hex") !='16c70194f16fa137d96168823f695d2ddb232554' && !(asset.category==3 || asset.category=='3')) {
       throw new Error("NFT cannot be created from this account"+senderAddress.toString("hex"));
     }
     // 5.create nft
     const nftToken = createNFTToken({
       name: asset.name,
+      description: asset.description,
       ownerAddress: senderAddress,
       nonce: transaction.nonce,
       value: asset.initValue,
       minPurchaseMargin: asset.minPurchaseMargin,
       category: asset.category,
       imageUrl: asset.imageUrl,
+      x:asset.x,
+      y:asset.y
     });
 
     // 6.update sender account with unique nft id
@@ -75,7 +102,7 @@ class CreateNFTAsset extends BaseAsset {
     });
 
     // 8.save nfts
-    const allTokens = await getAllNFTTokens(stateStore);
+    
     allTokens.push(nftToken);
     await setAllNFTTokens(stateStore, allTokens);
   }
