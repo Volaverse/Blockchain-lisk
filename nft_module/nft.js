@@ -10,7 +10,7 @@ const registeredNFTTokensSchema = {
       fieldNumber: 1,
       items: {
         type: "object",
-        required: ["id", "value", "ownerAddress", "minPurchaseMargin", "name","category","imageUrl","x","y"],
+        required: ["id", "value", "ownerAddress", "minPurchaseMargin", "name","category","imageUrl","x","y","threeD_url","area","landmark","type","bodypart","gender","serialNo"],
         properties: {
           id: {
             dataType: "bytes",
@@ -52,6 +52,34 @@ const registeredNFTTokensSchema = {
             dataType: "string",
             fieldNumber: 10,
           },
+          threeD_url: {
+            dataType: "string",
+            fieldNumber: 11,
+          },
+          area: {
+            dataType: "string",
+            fieldNumber: 12,
+          },
+          landmark: {
+            dataType: "string",
+            fieldNumber: 13,
+          },
+          type: {
+            dataType: "string",
+            fieldNumber: 14,
+          },
+          bodypart: {
+            dataType: "string",
+            fieldNumber: 15,
+          },
+          gender: {
+            dataType: "string",
+            fieldNumber: 16,
+          },
+          serialNo: {
+            dataType: "string",
+            fieldNumber: 17,
+          },
         },
       },
     },
@@ -60,7 +88,7 @@ const registeredNFTTokensSchema = {
 
 const CHAIN_STATE_NFT_TOKENS = "nft:registeredNFTTokens";
 
-const createNFTToken = ({ name,description, ownerAddress, nonce, value, minPurchaseMargin,category,imageUrl,x,y }) => {
+const createNFTToken = ({ name,description, ownerAddress, nonce, value, minPurchaseMargin,category,imageUrl,x,y,threeD_url,area,landmark,type,bodypart,gender,serialNo}) => {
   const nonceBuffer = Buffer.alloc(8);
   nonceBuffer.writeBigInt64LE(nonce);
   const seed = Buffer.concat([ownerAddress, nonceBuffer]);
@@ -77,6 +105,13 @@ const createNFTToken = ({ name,description, ownerAddress, nonce, value, minPurch
     imageUrl,
     x,
     y,
+    threeD_url,
+    area,
+    landmark,
+    type,
+    bodypart,
+    gender,
+    serialNo
   };
 };
 
