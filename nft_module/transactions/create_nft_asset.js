@@ -14,7 +14,7 @@ class CreateNFTAsset extends BaseAsset {
   schema = {
     $id: "lisk/nft/create",
     type: "object",
-    required: ["minPurchaseMargin", "initValue", "name","category","imageUrl","x","y"],
+    required: ["minPurchaseMargin", "initValue", "name","category","imageUrl"],
     properties: {
       minPurchaseMargin: {
         dataType: "uint32",
@@ -47,6 +47,38 @@ class CreateNFTAsset extends BaseAsset {
       y: {
         dataType: "string",
         fieldNumber: 8,
+      },
+      y: {
+        dataType: "string",
+        fieldNumber: 8,
+      },
+      threeDUrl: {
+        dataType: "string",
+        fieldNumber: 9,
+      },
+      area: {
+        dataType: "string",
+        fieldNumber: 10,
+      },
+      landmark: {
+        dataType: "string",
+        fieldNumber: 11,
+      },
+      type: {
+        dataType: "string",
+        fieldNumber: 12,
+      },
+      bodypart: {
+        dataType: "string",
+        fieldNumber: 13,
+      },
+      gender: {
+        dataType: "string",
+        fieldNumber: 14,
+      },
+      serialNo: {
+        dataType: "string",
+        fieldNumber: 15,
       },
     },
   };
@@ -88,7 +120,14 @@ class CreateNFTAsset extends BaseAsset {
       category: asset.category,
       imageUrl: asset.imageUrl,
       x:asset.x,
-      y:asset.y
+      y:asset.y,
+      threeDUrl:asset.threeDUrl,
+      area:asset.area,
+      landmark:asset.landmark,
+      type:asset.type,
+      bodypart:asset.bodypart,
+      gender:asset.gender,
+      serialNo:asset.serialNo
     });
 
     // 6.update sender account with unique nft id
