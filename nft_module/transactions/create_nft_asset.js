@@ -1,5 +1,4 @@
 const { BaseAsset } = require("lisk-sdk");
-const { baseAssetSchema } = require("../../../nft-frontend/src/utils/common");
 const {
   getAllNFTTokens,
   setAllNFTTokens,
