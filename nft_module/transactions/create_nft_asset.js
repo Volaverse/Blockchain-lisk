@@ -48,7 +48,7 @@ class CreateNFTAsset extends BaseAsset {
         dataType: "string",
         fieldNumber: 8,
       },
-      threeD_url: {
+      threeDUrl: {
         dataType: "string",
         fieldNumber: 9,
       },
@@ -117,7 +117,7 @@ class CreateNFTAsset extends BaseAsset {
       imageUrl: asset.imageUrl,
       x:asset.x,
       y:asset.y,
-      threeD_url:asset.threeD_url,
+      threeDUrl:asset.threeDUrl,
       area: asset.area,
       landmark:asset.landmark,
       type:asset.type,
