@@ -27,7 +27,16 @@ class TransferNFTAsset extends BaseAsset {
     },
   };
 
-  async apply({ asset, stateStore, reducerHandler, transaction }) {
+  validate({ asset }) {
+    if (asset.nftId == "") {
+      throw new Error("NFT id should have value");
+    }
+    if (asset.recipient == "") {
+      throw new Error("description cannot be empty");
+    }
+  }
+
+  async apply({ asset, stateStore, transaction }) {
     const nftTokens = await getAllNFTTokens(stateStore);
     const nftTokenIndex = nftTokens.findIndex((t) => t.id.equals(asset.nftId));
 
@@ -41,7 +50,9 @@ class TransferNFTAsset extends BaseAsset {
     // 5.verify that the sender owns the nft
 
     if (!tokenOwnerAddress.equals(senderAddress)) {
-      throw new Error("An NFT can only be transferred by the owner of the NFT.");
+      throw new Error(
+        "An NFT can only be transferred by the owner of the NFT."
+      );
     }
 
     const tokenOwner = await stateStore.account.get(tokenOwnerAddress);

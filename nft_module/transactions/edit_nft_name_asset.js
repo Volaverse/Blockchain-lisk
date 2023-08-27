@@ -22,27 +22,37 @@ class EditNFTNameAsset extends BaseAsset {
       },
     },
   };
+  validate({asset}){
+
+    if(asset.nftId==""){
+      throw new Error("NFT id should have value");
+    }
+    if (asset.name == "") {
+      throw new Error("description cannot be empty");
+    }
+
+  }
 
   async apply({ asset, stateStore, reducerHandler, transaction }) {
     const nftTokens = await getAllNFTTokens(stateStore);
     const nftTokenIndex = nftTokens.findIndex((t) => t.id.equals(asset.nftId));
 
-    if(asset.name==''){
-      throw new Error("Name cannot be empty")
+    if (asset.name == "") {
+      throw new Error("Name cannot be empty");
     }
 
     // 4.verify if the nft exists
     if (nftTokenIndex < 0) {
       throw new Error("Token id not found");
     }
-    var dup=[];
-    if(nftTokens.length>0){
-       dup = nftTokens.filter((item)=> item.name==asset.name)
+    var dup = [];
+    if (nftTokens.length > 0) {
+      dup = nftTokens.filter((item) => item.name == asset.name);
     }
 
-    console.log("check for dup length "+dup.length)
+    console.log("check for dup length " + dup.length);
 
-    if(dup.length>0){
+    if (dup.length > 0) {
       throw new Error("Name of nft should be unique");
     }
     const token = nftTokens[nftTokenIndex];
@@ -55,7 +65,7 @@ class EditNFTNameAsset extends BaseAsset {
     }
 
     // setting the minimum sell value
-    token.name=asset.name;
+    token.name = asset.name;
     nftTokens[nftTokenIndex] = token;
     await setAllNFTTokens(stateStore, nftTokens);
   }

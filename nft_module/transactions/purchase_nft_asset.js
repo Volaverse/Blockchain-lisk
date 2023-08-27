@@ -27,6 +27,19 @@ class PurchaseNFTAsset extends BaseAsset {
     },
   };
 
+  validate({asset}){
+    if(asset.nftId==""){
+      throw new Error("NFT id should have value");
+    }
+    if(asset.purchaseValue<=0){
+      throw new Error(
+        "The NFT purchase value needs to be more than 0"
+      );
+    }
+
+
+  }
+
   async apply({ asset, stateStore, reducerHandler, transaction }) {
     const nftTokens = await getAllNFTTokens(stateStore);
     const nftTokenIndex = nftTokens.findIndex((t) => t.id.equals(asset.nftId));
@@ -51,7 +64,10 @@ class PurchaseNFTAsset extends BaseAsset {
     const purchaseValue = asset.purchaseValue;
 
     if (tokenMinPurchaseValue > purchaseValue) {
-      throw new Error("Token can not be purchased. Purchase value is too low. Minimum value: " + tokenMinPurchaseValue);
+      throw new Error(
+        "Token can not be purchased. Purchase value is too low. Minimum value: " +
+          tokenMinPurchaseValue
+      );
     }
 
     const purchaserAddress = transaction.senderAddress;
@@ -70,7 +86,7 @@ class PurchaseNFTAsset extends BaseAsset {
 
     token.ownerAddress = purchaserAddress;
     token.value = purchaseValue;
-    token.minPurchaseMargin=0;
+    token.minPurchaseMargin = 0;
     nftTokens[nftTokenIndex] = token;
     await setAllNFTTokens(stateStore, nftTokens);
 

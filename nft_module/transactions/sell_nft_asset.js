@@ -27,7 +27,19 @@ class SellNFTAsset extends BaseAsset {
     },
   };
 
-  async apply({ asset, stateStore, reducerHandler, transaction }) {
+  validate({asset}){
+    if(asset.nftId==""){
+      throw new Error("NFT id should have value");
+    }
+    if(asset.minPurchaseMargin<0){
+      throw new Error(
+        "Minimum Purchase Margin value should be more than 0"
+      );
+    }
+
+  }
+
+  async apply({ asset, stateStore, transaction }) {
     const nftTokens = await getAllNFTTokens(stateStore);
     const nftTokenIndex = nftTokens.findIndex((t) => t.id.equals(asset.nftId));
 
@@ -36,7 +48,9 @@ class SellNFTAsset extends BaseAsset {
       throw new Error("Token id not found");
     }
     if (asset.minPurchaseMargin < 0 || asset.minPurchaseMargin > 100) {
-      throw new Error("The NFT minimum purchase value needs to be between 0 and 100.");
+      throw new Error(
+        "The NFT minimum purchase value needs to be between 0 and 100."
+      );
     }
     const token = nftTokens[nftTokenIndex];
     const tokenOwnerAddress = token.ownerAddress;

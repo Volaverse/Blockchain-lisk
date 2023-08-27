@@ -10,7 +10,24 @@ const registeredNFTTokensSchema = {
       fieldNumber: 1,
       items: {
         type: "object",
-        required: ["id", "value", "ownerAddress", "minPurchaseMargin", "name","category","imageUrl","x","y","threeDUrl","area","landmark","type","bodypart","gender","serialNo"],
+        required: [
+          "id",
+          "value",
+          "ownerAddress",
+          "minPurchaseMargin",
+          "name",
+          "category",
+          "imageUrl",
+          "x",
+          "y",
+          "threeDUrl",
+          "area",
+          "landmark",
+          "type",
+          "bodypart",
+          "gender",
+          "serialNo",
+        ],
         properties: {
           id: {
             dataType: "bytes",
@@ -38,7 +55,7 @@ const registeredNFTTokensSchema = {
           },
           category: {
             dataType: "uint32",
-            fieldNumber: 7, 
+            fieldNumber: 7,
           },
           imageUrl: {
             dataType: "string",
@@ -88,7 +105,25 @@ const registeredNFTTokensSchema = {
 
 const CHAIN_STATE_NFT_TOKENS = "nft:registeredNFTTokens";
 
-const createNFTToken = ({ name,description, ownerAddress, nonce, value, minPurchaseMargin,category,imageUrl,x,y,threeDUrl,area,landmark,type,bodypart,gender,serialNo}) => {
+const createNFTToken = ({
+  name,
+  description,
+  ownerAddress,
+  nonce,
+  value,
+  minPurchaseMargin,
+  category,
+  imageUrl,
+  x,
+  y,
+  threeDUrl,
+  area,
+  landmark,
+  type,
+  bodypart,
+  gender,
+  serialNo,
+}) => {
   const nonceBuffer = Buffer.alloc(8);
   nonceBuffer.writeBigInt64LE(nonce);
   const seed = Buffer.concat([ownerAddress, nonceBuffer]);
@@ -111,7 +146,7 @@ const createNFTToken = ({ name,description, ownerAddress, nonce, value, minPurch
     type,
     bodypart,
     gender,
-    serialNo
+    serialNo,
   };
 };
 
