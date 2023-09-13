@@ -58,6 +58,7 @@ lisk generate:asset token transfer 1
 ```
 
 ## Plugins
+- Faucet- This plugin allows gives the ui to interact with blockchain.It runs on port 4005
 - Faucet- This plugin allows the transfer of faucets to a particular account
    ### Add a new plugin
 ```
