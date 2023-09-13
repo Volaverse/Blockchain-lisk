@@ -9,7 +9,7 @@ Volaverse is an education-focused metaverse powered by the Lisk blockchain. It p
 To use this backend, you will need to install the following dependencies:
 
 - Nvm
-- Node.js v12.0.0(Please note that blockchain might not run on the other versions of nodeJs)
+- Node.js v16.15.0(Please note that blockchain might not run on the other versions of nodeJs)
 
 ### Installation
 
@@ -24,6 +24,17 @@ To use this backend, you will need to install the following dependencies:
    ```sh
     npm install
 
+### Start a node
+
+```
+./bin/run start
+```
+### Run Tests
+
+```
+npm test
+```
+
 ## Modules
 Our NFT module empowers developers to create, manage, and trade non-fungible tokens seamlessly within our blockchain ecosystem
 
@@ -37,30 +48,28 @@ Following are the assets in our blockchain:
 5. Sell nft asset - It’s to sell the nft 
 6. Transfer nft asset - It’s to transfer the nft
 
+ ### Add a new asset
+
+```
+lisk generate:asset ModuleName AssetName AssetID
+// Example
+lisk generate:asset token transfer 1
+```
+
 ## Plugins
-NFThttp Plugin: Seamlessly access NFT-related APIs through this plugin for enhanced functionality within the blockchain application
-## Public facing Apis
-The following are the public facing apis:
+- NFThttp Plugin: Seamlessly access NFT-related APIs through this plugin for enhanced functionality within the blockchain application
+- Faucet- This plugin allows the transfer of faucets to a particular account
+   ### Add a new plugin
+```
+   lisk generate:plugin PluginAlias
+   // Example
+   lisk generate:plugin httpAPI
+```
+## Regestring Delegate
+To register as a delegate kindly refer to [documentation](https://lisk.com/documentation/run-blockchain/forging.html#registering-a-delegate)
+## Learn More
 
-1. To get information about blockchain, you would make a GET request to the following URL:
-http://localhost:4000/api/node/info
-
-2. To information about a particular address, you would make a GET request to the following URL:
-http://localhost:4000/api/accounts/${address}
-
-3. To get information about transactions, you would make a GET request to the following URL:
-http://localhost:8080/api/transactions
-
-4. To get list of NFT’s in the blockchain, you would make a GET request to the following URL:
-http://localhost:8080/api/nft_tokens
-
-5. To get information about a particular NFT, you would make a GET request to the following URL:
-http://localhost:8080/api/nft_tokens/${id}
-
-6. To send transaction to blockchain, you would make a POST request to the following URL:
-http://localhost:4000/api/transactions
-       The request body would contain the following JSON data: {transaction}
-
+You can learn more in the [documentation](https://lisk.io/documentation/lisk-sdk/index.html).
 
 # License
 [Apache License](LICENSE)
