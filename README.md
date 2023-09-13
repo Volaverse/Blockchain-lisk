@@ -29,6 +29,7 @@ To use this backend, you will need to install the following dependencies:
 ```
 ./bin/run start
 ```
+It will take some time to sync the blocks
 ### Run Tests
 
 ```
