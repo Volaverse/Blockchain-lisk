@@ -1,0 +1,68 @@
+{
+	"label": "beta-sdk-app",
+	"version": "0.0.0",
+	"networkVersion": "1.0",
+	"rootPath": "~/.lisk",
+	"logger": {
+		"fileLogLevel": "info",
+		"consoleLogLevel": "info",
+		"logFileName": "lisk.log"
+	},
+	"rpc": {
+		"enable": true,
+		"mode": "ws",
+		"port": 8080
+	},
+	"genesisConfig": {
+		"blockTime": 10,
+		"communityIdentifier": "sdk",
+		"maxPayloadLength": 15360,
+		"bftThreshold": 68,
+		"minFeePerByte": 1000,
+		"baseFees": [
+			{
+				"moduleID": 5,
+				"assetID": 0,
+				"baseFee": "1000000000"
+			}
+		],
+		"rewards": {
+			"milestones": ["500000000", "400000000", "300000000", "200000000", "100000000"],
+			"offset": 2160,
+			"distance": 3000000
+		},
+		"minRemainingBalance": "5000000",
+		"activeDelegates": 101,
+		"standbyDelegates": 2,
+		"delegateListRoundOffset": 2
+	},
+	"forging": {
+		"force": true,
+		"waitThreshold": 2,
+		"delegates": [	
+		]
+	},
+	"network": {
+		"seedPeers": [
+			{
+				"ip": "13.230.167.238",
+				"port": 5000
+			}
+		],
+		"port": 5000
+	},
+	"transactionPool": {
+		"maxTransactions": 4096,
+		"maxTransactionsPerAccount": 64,
+		"transactionExpiryTime": 10800000,
+		"minEntranceFeePriority": "0",
+		"minReplacementFeeDifference": "10"
+	},
+	"plugins": {
+		"faucet": {
+			"encryptedPassphrase": "iterations=1000000&cipherText=f67cec7cd6d67449e0b54080f668be297738040bab4ec35ee85b4bbe2291994648c8246c7f74c63e127627839f844922af2bcdf081a5eac2b2ea9cd0f308b9ee816b1ae5dd09516fb225ba90e315de5691&iv=6d50170619361582c85a8a22&salt=f3f564263e512d7e310a6cec6b5c28cc&tag=2bf7f79b9b06bf021116592a73ffe616&version=1",
+			"captchaSecretkey": "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+			"captchaSitekey": "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+		}
+	}
+}

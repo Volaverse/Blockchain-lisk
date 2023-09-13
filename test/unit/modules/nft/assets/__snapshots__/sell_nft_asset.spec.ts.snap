@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SellNftAsset constructor should have valid schema 1`] = `
+Object {
+  "$id": "nft/sellNft-asset",
+  "properties": Object {
+    "minPurchaseMargin": Object {
+      "dataType": "uint32",
+      "fieldNumber": 2,
+    },
+    "name": Object {
+      "dataType": "string",
+      "fieldNumber": 3,
+    },
+    "nftId": Object {
+      "dataType": "bytes",
+      "fieldNumber": 1,
+    },
+  },
+  "required": Array [
+    "nftId",
+    "minPurchaseMargin",
+  ],
+  "title": "SellNftAsset transaction asset for nft module",
+  "type": "object",
+}
+`;
