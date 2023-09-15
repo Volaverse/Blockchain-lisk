@@ -13,7 +13,6 @@ import {
 	MonitorPlugin,
 	ReportMisbehaviorPlugin,
 } from 'lisk-sdk';
-import { DashboardPlugin } from '@liskhq/lisk-framework-dashboard-plugin';
 import { FaucetPlugin } from '@liskhq/lisk-framework-faucet-plugin';
 import { join } from 'path';
 import { getApplication } from '../app/app';
@@ -52,10 +51,6 @@ const setPluginConfig = (config: ApplicationConfig, flags: Flags): void => {
 	if (flags['faucet-plugin-port'] !== undefined) {
 		config.plugins[FaucetPlugin.alias] = config.plugins[FaucetPlugin.alias] ?? {};
 		config.plugins[FaucetPlugin.alias].port = flags['faucet-plugin-port'];
-	}
-	if (flags['dashboard-plugin-port'] !== undefined) {
-		config.plugins[DashboardPlugin.alias] = config.plugins[DashboardPlugin.alias] ?? {};
-		config.plugins[DashboardPlugin.alias].port = flags['dashboard-plugin-port'];
 	}
 };
 
@@ -124,18 +119,6 @@ export class StartCommand extends BaseStartCommand {
 			env: 'LISK_FAUCET_PLUGIN_PORT',
 			dependsOn: ['enable-faucet-plugin'],
 		}),
-		'enable-dashboard-plugin': flagParser.boolean({
-			description:
-				'Enable Dashboard Plugin. Environment variable "LISK_ENABLE_DASHBOARD_PLUGIN" can also be used.',
-			env: 'LISK_ENABLE_DASHBOARD_PLUGIN',
-			default: false,
-		}),
-		'dashboard-plugin-port': flagParser.integer({
-			description:
-				'Port to be used for Dashboard Plugin. Environment variable "LISK_DASHBOARD_PLUGIN_PORT" can also be used.',
-			env: 'LISK_DASHBOARD_PLUGIN_PORT',
-			dependsOn: ['enable-dashboard-plugin'],
-		}),
 	};
 
 	public getApplication(
@@ -162,9 +145,6 @@ export class StartCommand extends BaseStartCommand {
 		}
 		if (flags['enable-faucet-plugin']) {
 			app.registerPlugin(FaucetPlugin, { loadAsChildProcess: true });
-		}
-		if (flags['enable-dashboard-plugin']) {
-			app.registerPlugin(DashboardPlugin, { loadAsChildProcess: true });
 		}
 
 		return app;

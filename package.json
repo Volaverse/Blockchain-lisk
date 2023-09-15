@@ -101,7 +101,6 @@
 		}
 	},
 	"dependencies": {
-		"@liskhq/lisk-framework-dashboard-plugin": "^0.1.7",
 		"@liskhq/lisk-framework-faucet-plugin": "^0.1.7",
 		"@oclif/command": "1.8.16",
 		"@oclif/plugin-autocomplete": "1.2.0",

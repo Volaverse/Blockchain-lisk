@@ -39,7 +39,7 @@
 	"forging": {
 		"force": true,
 		"waitThreshold": 2,
-		"delegates": [	
+		"delegates": [
 		]
 	},
 	"network": {
