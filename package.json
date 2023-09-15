@@ -11,10 +11,10 @@
 		"javascript",
 		"typescript"
 	],
-	"homepage": "https://github.com/Volaverse/Middle-Backend.git#readme",
+	"homepage": "https://github.com/Volaverse/Blockchain-lisk.git#readme",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Volaverse/Middle-Backend.git"
+		"url": "git+https://github.com/Volaverse/Blockchain-lisk.git"
 	},
 	"engines": {
 		"node": ">=16.14.1 <=16",
