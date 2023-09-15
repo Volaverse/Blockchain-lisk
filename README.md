@@ -9,7 +9,7 @@ Volaverse is an education-focused metaverse powered by the Lisk blockchain. It p
 To use this backend, you will need to install the following dependencies:
 
 - Nvm
-- Node.js v16.15.0(Please note that blockchain might not run on the other versions of nodeJs)
+- Node.js v16.15.0(Please note that blockchain might not run on the other versions of Node.js)
 
 ### Installation
 
@@ -42,12 +42,12 @@ Our NFT module empowers developers to create, manage, and trade non-fungible tok
 ## Assets
 Following are the assets in our blockchain:
 
-1. Create nft asset- It’s to create NFT on blockchain
-2. Edit nft description asset- It’s to edit the description of NFT
-3. Edit nft name asset- It’s to edit the name of NFT
-4. Purchase nft asset- It’s to purchase the NFT
-5. Sell nft asset - It’s to sell the nft 
-6. Transfer nft asset - It’s to transfer the nft
+1. Create NFT asset- It’s to create NFT on blockchain
+2. Edit NFT description asset- It’s to edit the description of NFT
+3. Edit NFT name asset- It’s to edit the name of NFT
+4. Purchase NFT asset- It’s to purchase the NFT
+5. Sell NFT asset - It’s to sell the NFT 
+6. Transfer NFT asset - It’s to transfer the NFT
 
  ### Add a new asset
 
@@ -58,7 +58,6 @@ lisk generate:asset token transfer 1
 ```
 
 ## Plugins
-- Dashboard- This plugin allows gives the ui to interact with blockchain.It runs on port 4005
 - Faucet- This plugin allows the transfer of faucets to a particular account
    ### Add a new plugin
 ```
@@ -66,8 +65,8 @@ lisk generate:asset token transfer 1
    // Example
    lisk generate:plugin httpAPI
 ```
-## Regestring Delegate
-To register as a delegate kindly refer to [documentation](https://lisk.com/documentation/run-blockchain/forging.html#registering-a-delegate)
+## Registring Delegate
+To register as a delegate, kindly refer to [documentation](https://lisk.com/documentation/run-blockchain/forging.html#registering-a-delegate)
 ## Learn More
 
 You can learn more in the [documentation](https://lisk.io/documentation/lisk-sdk/index.html).
