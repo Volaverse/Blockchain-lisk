@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"description": "Lisk-SDK Application",
 	"author": "volaverse",
-	"license": "ISC",
+	"license": "Apache-2.0",
 	"keywords": [
 		"blockchain",
 		"lisk",
