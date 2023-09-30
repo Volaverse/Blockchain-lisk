@@ -43,6 +43,14 @@ export class CreateNftAsset extends BaseAsset {
         dataType: "uint32",
         fieldNumber: 5,
       },
+      imageUrl: {
+        dataType: "string",
+        fieldNumber: 6,
+      },
+      threeDUrl: {
+        dataType: "string",
+        fieldNumber: 7,
+      },
     },
   };
 
@@ -97,6 +105,8 @@ export class CreateNftAsset extends BaseAsset {
       value: asset.initValue,
       minPurchaseMargin: asset.minPurchaseMargin,
       category: asset.category,
+      imageUrl: asset.imageUrl,
+      threeDUrl: asset.threeDUrl,
     });
 
     // 6.update sender account with unique nft id

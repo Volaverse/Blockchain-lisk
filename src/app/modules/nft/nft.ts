@@ -28,6 +28,12 @@ export interface nftInterface {
   category: {
     dataType: "uint32";
   };
+  imageUrl: {
+    dataType: "string";
+  };
+  threeDUrl: {
+    dataType: "string";
+  };
 }
 interface RegisteredNFT {
   registeredNFTTokens: nftInterface[];
@@ -80,6 +86,14 @@ export const registeredNFTTokensSchema = {
             dataType: "uint32",
             fieldNumber: 7,
           },
+          imageUrl: {
+            dataType: "string",
+            fieldNumber: 8,
+          },
+          threeDUrl: {
+            dataType: "string",
+            fieldNumber: 9,
+          },
         },
       },
     },
@@ -97,6 +111,8 @@ export const createNFTToken = ({
   value,
   minPurchaseMargin,
   category,
+  imageUrl,
+  threeDUrl,
 }) => {
   const nonceBuffer = Buffer.alloc(8);
   nonceBuffer.writeBigInt64LE(nonce);
@@ -111,6 +127,8 @@ export const createNFTToken = ({
     ownerAddress,
     value,
     category,
+    imageUrl,
+    threeDUrl,
   };
 };
 // get list of all nft tokens

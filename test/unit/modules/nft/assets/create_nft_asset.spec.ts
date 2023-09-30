@@ -41,6 +41,8 @@ describe("CreateNftAsset", () => {
             minPurchaseMargin: "1",
             initValue: "10",
             category: "3",
+            imageUrl:"imageUrl",
+            threeDUrl:"threeDUrl"
           },
           transaction: { senderAddress: Buffer.alloc(0) } as any,
         });
@@ -87,6 +89,8 @@ describe("CreateNftAsset", () => {
           minPurchaseMargin: "1",
           initValue: "1",
           category: "3",
+          imageUrl:"imageUrl",
+          threeDUrl:"threeDUrl"
         },
         transaction: {
           senderAddress: account.address,

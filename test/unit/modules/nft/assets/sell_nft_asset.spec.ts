@@ -84,6 +84,8 @@ describe("SellNftAsset", () => {
         description: "description",
         category: 3,
         nonce: BigInt(0),
+        imageUrl:"imageUrl",
+        threeDUrl:"threeDUrl"
       });
       nftObj = {
         registeredNFTTokens: [nft],

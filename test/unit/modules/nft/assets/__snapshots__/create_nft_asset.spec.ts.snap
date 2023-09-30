@@ -12,6 +12,10 @@ Object {
       "dataType": "string",
       "fieldNumber": 4,
     },
+    "imageUrl": Object {
+      "dataType": "string",
+      "fieldNumber": 6,
+    },
     "initValue": Object {
       "dataType": "uint64",
       "fieldNumber": 2,
@@ -23,6 +27,10 @@ Object {
     "name": Object {
       "dataType": "string",
       "fieldNumber": 3,
+    },
+    "threeDUrl": Object {
+      "dataType": "string",
+      "fieldNumber": 7,
     },
   },
   "required": Array [
